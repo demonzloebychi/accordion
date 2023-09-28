@@ -1,6 +1,14 @@
-const accordion = document.querySelector('.accordion__title');
+const accordionItems = document.querySelectorAll(".accordion-item");
 
-if (accordion){
-    accordion.addEventListener("click", function(e){
-        accordion.classList.toggle('active');
-    })};
+for (let i = 0; i < accordionItems.length; i++) {
+  accordionItems[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+
+    for (let j = 0; j < accordionItems.length; j++) {
+      if (accordionItems[j] !== this) {
+        accordionItems[j].classList.remove("active");
+      }
+    }
+  });
+}
+
